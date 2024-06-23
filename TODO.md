@@ -3,6 +3,7 @@ To Do for Open
 - [x] User authentication
 - [x] Main Page
 - [x] Login Page
+- [x] Upload Page
 - [ ] Registration Page
 - [ ] Profile Page
 - [ ] Video viewing Page
