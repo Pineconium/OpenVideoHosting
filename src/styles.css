@@ -1,0 +1,450 @@
+/* STYLESHEET FOR OPEN VIDEO HOSTING */
+
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+
+	background: #475370;
+	font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+/* links */
+a:link,a:visited {color: #ffffff; font-weight: bold; text-decoration:underline; background: none; }
+a:hover { color: #002d73; text-decoration: none; background: #ffffff}
+
+a:link.no_under,a:visited.no_under {text-decoration: none; background: none;}
+
+a.email:link, a.email:visited {background:#AAAAAA; text-decoration: none; padding:1px; border: 1px #444444 solid;}
+a.email:hover {background:#CCCCCC !important; text-decoration: none; padding:1px; border: 1px #777777 solid !important;}
+
+/* header */
+
+.sub_header {
+	color: #666666;
+	font-size:18px;
+	font-weight:bold;
+	text-align: center;
+	padding-bottom: 10px;
+	cursor: default;
+}
+
+/* content box */
+.title {
+	color: #002d73;
+	font-size:18px;
+	font-weight:bold;
+	padding-top: 8px;
+}
+
+.table_title {
+	color: #c5c4c4;
+	font-size:18px;
+	font-weight:bold;
+	padding-top: 8px;
+}
+
+.announce_title {
+	color: #FCFCFA;
+	font-size:16px;
+	font-weight:bold;
+}
+
+.loginpage_title {
+	color: #FCFCFA;
+	font-size:26px;
+	font-weight:bold;
+	text-align:center;
+}
+
+.loginpage_text {
+	color: #FCFCFA;
+	font-size:12px;
+	text-align:center;
+}
+
+.title_sm {
+	color: #002d73;
+	font-size:12px;
+	font-weight:bold;
+	padding-top: 8px;
+}
+
+.footerText {
+	color: rgb(123, 209, 156);
+	font-size:10px;
+	font-weight:normal;
+	padding-top: 8px;
+}
+
+.ListStuff {
+	text-align: left;
+	margin-top:  -40px;
+	margin-left: -20px;
+}
+
+.unimp {
+	color: #4c6a86;
+}
+
+.content { color: #333333; text-align: justify; }
+.small { font-size: 11px; }
+
+.content_foot_cell { padding-right: 33px; padding-left: 33px; }
+.content_foot { padding-top: 8px; color: #595959; }
+
+a:link.footer,a:visited.footer {color:#2B2B2B;}
+a:hover.footer {color: #666666; }
+
+.poster_image {
+	text-indent: 22px;
+	padding-top: 7px;
+}
+
+.title-container {
+	display: flex;
+	align-items: center; /* Align items vertically centered */
+  }
+  
+  .title-container img {
+	margin-right: 10px; /* Add some space between the image and the title */
+  }
+
+
+/* Navbar styling */
+
+.navbar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px;
+	background-color: #25324A;
+}
+
+.nav-links {
+	display: flex;
+	gap: 15px;
+}
+
+.nav-actions {
+	display: flex;
+	gap: 10px;
+}
+
+.nav-actions a {
+	text-decoration: none;
+}
+
+.nav-actions input[type="text"] {
+	padding: 5px;
+	margin-right: 10px;
+	height: 4px;
+}
+
+/* Video Box Styling */
+
+.video-container {
+	display: inline-block;
+	width: 220px;
+	margin: 10px;
+	background-color: #3b4b5b;
+	color: white;
+	padding: 10px;
+	text-align: left;
+	vertical-align: top;
+}
+.video-thumbnail {
+	width: 100%;
+	height: 120px;
+	background-color: black;
+}
+.video-title {
+	font-size: 16px;
+	margin: 10px 0;
+}
+.video-info {
+	font-size: 12px;
+}
+
+/* Creator Box Styling */
+.creator-container {
+	display: inline-block;
+	width: 220px;
+	margin: 10px;
+	background-color: #3b4b5b;
+	color: white;
+	padding: 10px;
+	text-align: left;
+	vertical-align: top;
+}
+.creator-thumbnail {
+	width: 116px;
+	height: 116px;
+	background-color: black;
+	background-position: center;
+	background-size: cover;
+}
+.creator-title {
+	font-size: 16px;
+	margin: 10px 0;
+}
+
+/* Gallery stuff*/
+div.gallery {
+	margin: 5px;
+	border: 1px solid #ccc;
+	float: left;
+	width: 180px;
+  }
+  
+  div.gallery:hover {
+	border: 1px solid #777;
+  }
+  
+  div.gallery img {
+	width: 100%;
+	height: auto;
+  }
+  div.gallery img.WPSizeMarker {
+	width: auto;
+	height: auto;
+  }
+  
+  div.desc {
+	padding: 15px;
+	text-align: center;
+  }
+
+
+
+
+/* Header/Logo Table */
+
+table.PineconiumLogoSector {
+	background-color: #25324A;
+	color: whitesmoke;
+	margin: 0 auto;
+	width: 100%;
+	max-width: 850px;
+	max-height: 243px;
+	text-align: left;
+	border-collapse: collapse;
+  }
+  table.PineconiumLogoSector td, table.PineconiumLogoSector th {
+	padding: 3px 2px;
+  }
+  table.PineconiumLogoSector tbody td {
+	font-size: 13px;
+  }
+  table.PineconiumLogoSector tr:nth-child(even) {
+	background: #000000;
+	color: #002d73;
+  }
+  table.PineconiumLogoSector thead th {
+	font-size: 15px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-align: center;
+  }
+  table.PineconiumLogoSector thead th:first-child {
+	border-left: none;
+  }
+  
+  table.PineconiumLogoSector tfoot td {
+	font-size: 14px;
+  }
+  table.PineconiumLogoSector tfoot .links {
+	text-align: right;
+  }
+  table.PineconiumLogoSector tfoot .links a{
+	display: inline-block;
+	background: #1C6EA4;
+	color: #FFFFFF;
+	padding: 2px 8px;
+	border-radius: 5px;
+  }
+
+
+/* Top Status Area */
+/* For the donator, front page announcements, and creator of the week */
+table.TopStatusArea {
+	border: 1px solid #25324A;
+	background-color: #6E8DAF;
+	margin: 0 auto;
+	width: 100%;
+	max-width: 850px;
+	text-align: center;
+	border-collapse: collapse;
+	table-layout: fixed;
+  }
+  table.TopStatusArea td, table.TopStatusArea th {
+	border: 1px solid #AAAAAA;
+	padding: 3px 2px;
+	width: 33.33%;
+	max-width: 283.33px;
+	
+	/* Fix a scaling issue */
+	box-sizing: border-box;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: clip;
+  }
+  table.TopStatusArea tbody td {
+	font-size: 13px;
+  }
+  table.TopStatusArea tr:nth-child(even) {
+	background: #D0E4F5;
+  }
+  table.TopStatusArea td:first-child, table.TopStatusArea th:first-child {
+	width: auto;
+  }
+  table.TopStatusArea thead {
+	background-color: #2d5aad;
+	border-bottom: 2px solid #444444;
+  }
+  table.TopStatusArea thead th {
+	font-size: 15px;
+	background-color: #2d5aad;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-align: center;
+	border-left: 2px solid #D0E4F5;
+  }
+  table.TopStatusArea thead th:first-child {
+	border-left: none;
+  }
+  table.TopStatusArea tfoot td {
+	font-size: 14px;
+  }
+  table.TopStatusArea tfoot .links {
+	text-align: right;
+  }
+  table.TopStatusArea tfoot .links a {
+	display: inline-block;
+	background: #1C6EA4;
+	color: #FFFFFF;
+	padding: 2px 8px;
+	border-radius: 5px;
+  }
+  table.TopStatusArea th, table.TopStatusArea td {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+  }  
+
+
+/* Main Content Table                    */
+/* Kinda has a minor scaling issue lmfao */
+table.PineconiumTabNav {
+	border: 1px solid #25324A;
+	background-color: #15467A;
+	margin: 0 auto;
+	width: 100%;
+	max-width: 850px;
+	text-align: left;
+	border-collapse: collapse;
+  }
+  table.PineconiumTabNav td, table.PineconiumTabNav th {
+	border: 1px solid #AAAAAA;
+	padding: 3px 2px;
+  }
+  table.PineconiumTabNav tbody td {
+	font-size: 13px;
+	width: 100%;
+	max-width: 850px;
+  }
+  table.PineconiumTabNav tr:nth-child(even) {
+	background: #D0E4F5;
+  }
+  table.PineconiumTabNav thead {
+	background: #25324A;
+	background: -moz-linear-gradient(top, #25324A 0%, #475370 66%, #15467A 100%);
+	background: -webkit-linear-gradient(top, #25324A 0%, #475370 66%, #15467A 100%);
+	background: linear-gradient(to bottom, #25324A 0%, #475370 66%, #15467A 100%);
+	border-bottom: 2px solid #444444;
+  }
+  table.PineconiumTabNav thead th {
+	font-size: 15px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-align: center;
+	border-left: 2px solid #D0E4F5;
+  }
+  table.PineconiumTabNav thead th:first-child {
+	border-left: none;
+  }
+  
+  table.PineconiumTabNav tfoot td {
+	font-size: 14px;
+  }
+  table.PineconiumTabNav tfoot .links {
+	text-align: right;
+  }
+  table.PineconiumTabNav tfoot .links a{
+	display: inline-block;
+	background: #1C6EA4;
+	color: #FFFFFF;
+	padding: 2px 8px;
+	border-radius: 5px;
+  }
+
+  /* Updates Table */
+
+  table.UpdatesSect {
+	border: 1px solid #1C6EA4;
+	background-color: #D9EED9;
+	margin: 0 auto;
+	width: 100%;
+	max-width: 850px;
+	text-align: left;
+	border-collapse: collapse;
+  }
+  table.UpdatesSect td, table.UpdatesSect th {
+	border: 1px solid #AAAAAA;
+	padding: 3px 2px;
+  }
+  table.UpdatesSect tbody td {
+	font-size: 13px;
+  }
+  table.UpdatesSect tr:nth-child(even) {
+	background: #D0E4F5;
+  }
+  table.UpdatesSect thead {
+	background: #044A13;
+	background: -moz-linear-gradient(top, #43774e 0%, #1d5c2a 66%, #044A13 100%);
+	background: -webkit-linear-gradient(top, #43774e 0%, #1d5c2a 66%, #044A13 100%);
+	background: linear-gradient(to bottom, #43774e 0%, #1d5c2a 66%, #044A13 100%);
+	border-bottom: 2px solid #444444;
+  }
+  table.UpdatesSect thead th {
+	font-size: 15px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-align: center;
+	border-left: 2px solid #D0E4F5;
+  }
+  table.UpdatesSect thead th:first-child {
+	border-left: none;
+  }
+  
+  table.UpdatesSect tfoot {
+	font-size: 14px;
+	font-weight: bold;
+	color: #FFFFFF;
+	background: #454C52;
+	background: -moz-linear-gradient(top, #73797d 0%, #575e63 66%, #454C52 100%);
+	background: -webkit-linear-gradient(top, #73797d 0%, #575e63 66%, #454C52 100%);
+	background: linear-gradient(to bottom, #73797d 0%, #575e63 66%, #454C52 100%);
+	border-top: 2px solid #444444;
+  }
+  table.UpdatesSect tfoot td {
+	font-size: 14px;
+  }
+
+  .imgcontainer {
+	display: grid;
+	align-items: left; 
+	grid-template-columns: 1fr 1fr 1fr;
+	column-gap: 1px;
+   }
