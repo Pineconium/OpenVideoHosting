@@ -1,4 +1,4 @@
-To Do for Open
+To-Do for Open:
 - [x] SQL Database interaction
 - [x] User authentication
 - [x] Main Page
