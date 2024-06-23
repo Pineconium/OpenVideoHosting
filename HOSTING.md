@@ -18,6 +18,4 @@ To start running a Open-powered video hosting site, you'll need the following:
     - And Website Sercuity provider
 4. A resigstered domain (if you want your site to be public).
 ## 2. How to Start
-First make sure both your server and client computers are on, and then login to your server computer as root via your client PC. On your client PC, make sure you have the `source.zip` folder and extract it. You'll need to send all of the contents of the zip folder to your server PC and then move the contents to your server's hosting directory (such as `/var/www/html` if you're using Apache on Linux).
-
-Once you have everything moved to your server computer, make sure you can access it with a localhost IP (which are IP address starting with 192.168.0.*xx*).
+First make sure both your server and client computers are on, and then login to your server computer as root via your client PC. On your client PC, make sure you have the `source.zip` folder and extract it. You'll need to send all of the contents of the zip folder to your server PC and then move the contents to your server's hosting directory (such as `/var/www/html` if you're using Apache on Linux). Once you have everything moved to your server computer, make sure you can access it with a localhost IP (which are IP address starting with 192.168.0.*xx*).
