@@ -9,9 +9,9 @@ Make sure your site has enough moderators to help enforce those rules chosen by 
 You must also choose appropriate punishments for the users if they are caught breaking your rules. First-time offenders should only be given minimal punishments (unless it is something serious), such as a 1-hour 'timeout'.
 ## 2. Open's own rules.
 ### 2.1. Bot Accounts.
-Try to prevent as many bot accounts as possible from your site, such as making/installing anti-bot plugins, enforcing stricter Captchas, etc. Failing to do so may result in your site having a 'bot-epidemic' which may cause server issues and loss
-of your user base.
+Try to prevent as many bot accounts as possible from your site, such as making/installing anti-bot plugins, enforcing stricter Captchas, etc. Failing to do so may result in your site having a 'bot-epidemic' which may cause server issues and loss of your user base.
 ### 2.2. Do not allow illegal content!
 Hosters should not use Open to allow users to host what is deemed as 'illegal content', this includes, but is not limited to, any form of child pornography (sexualised content involving anyone under 18 regardless of what your local laws say), realistic and/or brutal child abuse,
-threats of any form of terrorism (i.e. bomb threats), or anything regarding rape or life-threatening fetish content. If a user posts anything that would be deemed 'illegal content', immediately permaban or IP-ban the offender, 
-remove the video from the server's storage, and contact the proper authorities. Sites that fail to follow this rule could potentially have their site seized by federal authorities.
+threats of any form of terrorism (i.e. bomb threats), or anything regarding rape or life-threatening fetish content. If a user posts anything that would be deemed 'illegal content', immediately permaban or IP-ban the offender, remove the video from the server's storage, and contact the proper authorities. Sites that fail to follow this rule could potentially have their site seized by federal authorities.
+### 2.3. AI Generated Content.
+Sites are allowed to host AI-generated content, albeit with some guidelines. AI-generated content must NOT be pushed out more than human-made content within the site, and any video(s) using AI-generated content should ONLY be used for "experimenting with" and not for engagement farming. Accounts that only upload AI-generated content for the sole purpose of getting views, likes, or any other form of engagement should either be banned or 'shadowbanned', depending on what *your* rules regarding AI-generated content are.
