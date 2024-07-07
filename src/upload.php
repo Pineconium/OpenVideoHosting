@@ -47,10 +47,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $userQuery="SELECT id FROM users WHERE username='$username'";
     $userResult=mysqli_query($con, $userQuery);
     $userRow=mysqli_fetch_assoc($userResult);
-    $userId=$userRow['id'];
+    $userID=$userRow['id'];
 
     /* and and that video to the database */
-    $query="INSERT INTO videos (user_id, title, description, filepath, thumbnailpath, vidlength, views, creationdate) VALUES ('$userId', '$title', '$description', '$videoFilePath', '$thumbnailFilePath', 0, 0, NOW())";
+    $query="INSERT INTO videos (user_id, title, description, filepath, thumbnailpath, vidlength, views, creationdate) VALUES ('$userID', '$title', '$description', '$videoFilePath', '$thumbnailFilePath', 0, 0, NOW())";
     mysqli_query($con, $query) or die(mysqli_error($con));
 
     echo "<p>Video uploaded successfully!</p>";

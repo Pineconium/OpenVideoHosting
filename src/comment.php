@@ -25,12 +25,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $userResult = mysqli_query($con, $userQuery);
         if ($userResult && mysqli_num_rows($userResult) > 0) {
             $userData = mysqli_fetch_assoc($userResult);
-            $userId = $userData['id'];
+            $userID = $userData['id'];
 
             /* add the comments data into the database
              * This makes it so that the comment is viewable on the page
              */
-            $insertQuery = "INSERT INTO comments (video_id, user_id, content) VALUES ('$videoId', '$userId', '$comment')";
+            $insertQuery = "INSERT INTO comments (video_id, user_id, content) VALUES ('$videoId', '$userID', '$comment')";
             if (mysqli_query($con, $insertQuery)) {
                 header("Location: video.php?id=$videoId");
                 exit();
