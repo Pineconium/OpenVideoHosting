@@ -60,7 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $updateQuery = "UPDATE videos SET filepath='$videoFilePath' WHERE id='$videoID'";
     mysqli_query($con, $updateQuery) or die(mysqli_error($con));
 }
-
+?>
 <!DOCTYPE html>
 <html>
 <head>
