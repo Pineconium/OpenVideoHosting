@@ -1,10 +1,12 @@
 <!-- 
 * Open Video Hosting Project Main Page
-* Version: 10a (June 23rd 2024)
+* Version: 10d (July 9th 2024)
 *
 * Note that some stuff such as donation and database control either have empty or placeholder values.
 * It is up to the hoster of this Open page to control how these work and will need to fill in these
 * values with their correct data. See HOSTING.MD for more information.
+*
+* Originally written by Daniel B. (better known as Pineconium) ;-)
 -->
 
 <?php
@@ -44,8 +46,8 @@ if(isset($_POST['username'])){
                 $maxid = (int)$row['max_id'];
             }
             else $maxid=0;
-            $userId=$maxid+1;
-            $query="INSERT INTO users (id, username, password) VALUES ('$userId', '$username', '".md5($password)."')";
+            $userID=$maxid+1;
+            $query="INSERT INTO users (id, username, password) VALUES ('$userID', '$username', '".md5($password)."')";
             mysqli_query($con, $query) or die(mysqli_error($con));
             header("Location: index.php");  
             exit();
@@ -60,7 +62,7 @@ if(isset($_POST['username'])){
     <head>
         <title>Open &#187; Register</title>
         <!-- Styles and Favicon management-->
-        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="style/styles.css">
         <link rel="icon" type="image/x-icon" href="images/logos/favicon.png">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">

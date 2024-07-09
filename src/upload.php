@@ -1,6 +1,6 @@
 <!-- 
 * Open Video Hosting Project Main Page
-* Version: 10a (June 23rd 2024)
+* Version: 10d (July 9th 2024)
 *
 * Note that some stuff such as donation and database control either have empty or placeholder values.
 * It is up to the hoster of this Open page to control how these work and will need to fill in these
@@ -16,7 +16,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-/* Kick the user if they aren't logged in */
+/* kick the user if they aren't logged in */
 if (!isset($_SESSION['username'])) {
     header("Location: login.php");
     exit();
@@ -24,38 +24,42 @@ if (!isset($_SESSION['username'])) {
 
 require('db.php');
 
-/* Once the user has press the Upload button */
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    /* video data stuff */  
-    $title=stripslashes($_POST['title']);
-    $title=mysqli_real_escape_string($con, $title);
+    /* video data stuff */ 
+    
+    $title = stripslashes($_POST['title']);
+    $title = mysqli_real_escape_string($con, $title);
 
-    $description=stripslashes($_POST['description']);
-    $description=mysqli_real_escape_string($con, $description);
+    $description = stripslashes($_POST['description']);
+    $description = mysqli_real_escape_string($con, $description);
 
-    $videoFileName=$_FILES['video']['name'];
-    $videoFileTmpName=$_FILES['video']['tmp_name'];
-    $videoFilePath='usergen/vid' . $videoFileName;
-    move_uploaded_file($videoFileTmpName, $videoFilePath);
+    $videoFileName = $_FILES['video']['name'];
+    $videoFileTmpName = $_FILES['video']['tmp_name'];
 
-    $thumbnailFileName=$_FILES['thumbnail']['name'];
-    $thumbnailFileTmpName=$_FILES['thumbnail']['tmp_name'];
-    $thumbnailFilePath='usergen/img/thumbnail/' . $thumbnailFileName;
+    $thumbnailFileName = $_FILES['thumbnail']['name'];
+    $thumbnailFileTmpName = $_FILES['thumbnail']['tmp_name'];
+    $thumbnailFilePath = 'usergen/img/thumbnail/' . $thumbnailFileName;
     move_uploaded_file($thumbnailFileTmpName, $thumbnailFilePath);
 
-    $username=$_SESSION['username'];
-    $userQuery="SELECT id FROM users WHERE username='$username'";
-    $userResult=mysqli_query($con, $userQuery);
-    $userRow=mysqli_fetch_assoc($userResult);
-    $userID=$userRow['id'];
+    $username = $_SESSION['username'];
+    $userQuery = "SELECT id FROM users WHERE username='$username'";
+    $userResult = mysqli_query($con, $userQuery);
+    $userRow = mysqli_fetch_assoc($userResult);
+    $userID = $userRow['id'];
 
-    /* and and that video to the database */
-    $query="INSERT INTO videos (user_id, title, description, filepath, thumbnailpath, vidlength, views, creationdate) VALUES ('$userID', '$title', '$description', '$videoFilePath', '$thumbnailFilePath', 0, 0, NOW())";
+    /* insert video info into database */
+    $query = "INSERT INTO videos (user_id, title, description, thumbnailpath, duration, views, upload_time) VALUES ('$userID', '$title', '$description', '$thumbnailFilePath', 0, 0, NOW())";
     mysqli_query($con, $query) or die(mysqli_error($con));
 
-    echo "<p>Video uploaded successfully!</p>";
+    /* fetch id of said video */
+    $videoID = mysqli_insert_id($con);
+
+    $videoFilePath = 'usergen/vid/' . $videoID . '.mp4';	// <-- so that the video player can fetch the video.
+    move_uploaded_file($videoFileTmpName, $videoFilePath);
+
+    $updateQuery = "UPDATE videos SET filepath='$videoFilePath' WHERE id='$videoID'";
+    mysqli_query($con, $updateQuery) or die(mysqli_error($con));
 }
-?>
 
 <!DOCTYPE html>
 <html>
@@ -100,6 +104,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </tr>
         </tbody>
     </table>
+
     <!-- Main Layout-->
     <table class="PineconiumTabNav">
         <tbody>
@@ -120,10 +125,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     <form method="post" enctype="multipart/form-data">
                                         <h1 class="title">Title</h1>
                                         <input type="text" name="title" required>
-
+                                        
                                         <h1 class="title">Video</h1>
                                         <input type="file" name="video" accept="video/*" required>
-
+                                        
                                         <h1 class="title">Thumbnail</h1>
                                         <input type="file" name="thumbnail" accept="image/*" required>
                                         
@@ -141,12 +146,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </tbody>
     </table>
     <table class="UpdatesSect">
-            <!-- Footer -->
-            <tfoot>
-              <tr>
-                  <td><p class="footerText">&copy; Pineconium 2024. All rights reserved. Powered by OpenViHo version 10a</p></td>
-              </tr>
-              </tfoot>
-          </table>
-    </body>
+        <!-- Footer -->
+        <tfoot>
+            <tr>
+                <td><p class="footerText">&copy; Pineconium 2024. All rights reserved. Powered by OpenViHo version 10a</p></td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
 </html>

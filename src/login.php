@@ -1,50 +1,58 @@
 <!-- 
 * Open Video Hosting Project Main Page
-* Version: 10a (June 23rd 2024)
+* Version: 10d (July 9th 2024)
 *
 * Note that some stuff such as donation and database control either have empty or placeholder values.
 * It is up to the hoster of this Open page to control how these work and will need to fill in these
 * values with their correct data. See HOSTING.MD for more information.
+*
+* Originally written by Daniel B. (better known as Pineconium) ;-)
 -->
 
 <?php
 session_start();
+// Debugging support
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+// Connect to the database
 require('db.php');
 
 /* Login control stuff */
 if(isset($_POST['username'])){
-    $username = stripslashes($_REQUEST['username']);    // Removes backslashes.
-    /* Escape any special character in a string. */
-    $username = mysqli_real_escape_string($con, $username);
+        $username = stripslashes($_REQUEST['username']);  // Removes backslashes.
+        /* Escape any special character in a string. */
+        $username = mysqli_real_escape_string($con, $username);
 
-    /* ...and now do the same for the password */
-    $password = stripslashes($_REQUEST['password']);    // Removes backslashes.
-    $password = mysqli_real_escape_string($con, $password);
-    /* Make sure that the user exists first so that ghost accounts can't be signed in! */
-    $query = "SELECT * FROM `users` WHERE username='$username' AND password='".md5($password)."'";
-    $result = mysqli_query($con, $query) or die(mysqli_error($con));
+        /* ...and now do the same for the password */
+        $password = stripslashes($_REQUEST['password']);  // Removes backslashes.
+        $password = mysqli_real_escape_string($con, $password);
 
-    /* and now login */
-    $rows = mysqli_num_rows($result);
-    if($rows == 1){
-            $_SESSION['username'] = $username;
-            header("Location: index.php");              // <--  and now go home.
-            exit();
-    }else{
-        echo "<p>Invaild login info. STOP 201</p>"
-    }
+        /* Make sure that the user exists first so that ghost accounts can't be signed in! */
+        $query = "SELECT * FROM `users` WHERE username='$username' AND password='".md5($password)."'";    // <-- Fancy SQL stuff
+        $result = mysqli_query($con, $query) or die(mysqli_error($con));
+
+        /* and now login */
+        $rows = mysqli_num_rows($result);
+        if($rows == 1){
+                $_SESSION['username'] = $username;
+                header("Location: index.php");  // <--  and now go home.
+                exit();
+        }else{
+                echo "<div class='form'>
+                <h1>STOP 201</h1>
+                <p>The Username or password provided is invalid. Click here to go back to the <a href='login.php'>login</a> page or <a href='register.php'>register now!</a></p></div>";
+        }
 }else{
 ?>
+
 <!DOCTYPE html>
 <html>
     <head>
         <title>Open &#187; Login</title>
         <!-- Styles and Favicon management-->
-        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="style/styles.css">
         <link rel="icon" type="image/x-icon" href="images/logos/favicon.png">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -89,7 +97,7 @@ if(isset($_POST['username'])){
                   <input type="text" name="username" placeholder="Username" required />
                   <input type="password" name="password" placeholder="Password" required />
                   <input type="submit" name="submit" value="Login" />
-                  <?php if (isset($error)) { echo "<p style='color:red;'>$error</p>"; } ?>
+		  <?php if (isset($error)) { echo "<p style='color:red;'>$error</p>"; } ?>
               </form>
               </td>
             </tr>

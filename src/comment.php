@@ -1,6 +1,6 @@
 <!-- 
 * Open Video Hosting Project Main Page
-* Version: 10a (July 5th 2024)
+* Version: 10d (July 9th 2024)
 *
 * Note that some stuff such as donation and database control either have empty or placeholder values.
 * It is up to the hoster of this Open page to control how these work and will need to fill in these
@@ -25,12 +25,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $userResult = mysqli_query($con, $userQuery);
         if ($userResult && mysqli_num_rows($userResult) > 0) {
             $userData = mysqli_fetch_assoc($userResult);
-            $userID = $userData['id'];
+            $userId = $userData['id'];
 
             /* add the comments data into the database
-             * This makes it so that the comment is viewable on the page
+	     * This makes it so that the comment is viewable on the page
              */
-            $insertQuery = "INSERT INTO comments (video_id, user_id, content) VALUES ('$videoId', '$userID', '$comment')";
+            $insertQuery = "INSERT INTO comments (video_id, user_id, content) VALUES ('$videoId', '$userId', '$comment')";
             if (mysqli_query($con, $insertQuery)) {
                 header("Location: video.php?id=$videoId");
                 exit();

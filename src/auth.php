@@ -1,6 +1,6 @@
 <?php
-session_start();
-function amILoggedIn() {
-    return isset($_SESSION['username']);
-}
+	session_start();
+	function amILoggedIn() {
+		return isset($SESSION['username.php']);
+	}
 ?>
