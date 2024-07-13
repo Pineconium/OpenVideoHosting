@@ -37,17 +37,18 @@ if ($userResult && mysqli_num_rows($userResult) > 0) {
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $uploadOk = true;
 
-    /* This is where the profile pictures get handelled */
+    /* this is where the profile pictures get handelled */
     if (!empty($_FILES['profile_picture']['name'])) {
         $target_dir = "usergen/img/pfp/";
         $target_file = $target_dir . $userData['id'] . ".png";
         $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
         
         /* The next three lines check if the file submitted is...
-	 * - A PNG image (JPEG and GIF support soon!)
-	 * - Under 5,000,000 (~5MB) big
-	 * - And is actually a fucking image
-	 */
+	    * - A PNG image (JPEG and GIF support soon!)
+	    * - Under 5,000,000 (~5MB) big
+	    * - And is actually a fucking image
+	    */
+        
         $check = getimagesize($_FILES['profile_picture']['tmp_name']);
         if ($check === false) {
             echo "Error submiting. Cause? Suggested file is not a vaild image.";

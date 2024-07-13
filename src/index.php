@@ -27,8 +27,8 @@ $videoQuery = "
         videos.title, 
         videos.filepath, 
         videos.thumbnailpath, 
-        videos.created_at, 
-        videos.duration,
+        videos.creationdate, 
+        videos.vidlength,
         videos.views,
         users.username 
     FROM 
@@ -49,8 +49,8 @@ $queryTopVideos = "
         videos.title, 
         videos.filepath, 
         videos.thumbnailpath, 
-        videos.created_at, 
-        videos.duration,
+        videos.creationdate, 
+        videos.vidlength,
         videos.views,
         users.username 
     FROM 
@@ -189,21 +189,21 @@ $topvidresult = $con->query($queryTopVideos);
                       <tr>
                         <!-- To save stuff like updating time, this should perferably be updated every 25 mins.-->
                         <td>
-			 <?php if ($result->num_rows > 0): ?>
-                          <?php while($row = $result->fetch_assoc()): ?>
-                            <div class="video-container">
-                             <div class="video-thumbnail">
-                              <img src="<?php echo htmlspecialchars($row['thumbnailpath']); ?>" alt="Thumbnail">
-                             </div>
-                             <div class="video-title"><?php echo htmlspecialchars($row['title']); ?></div>
-                              <div class="video-info">
+			                    <?php if ($result->num_rows > 0): ?>
+                            <?php while($row = $result->fetch_assoc()): ?>
+                              <div class="video-container">
+                                <div class="video-thumbnail">
+                                  <img src="<?php echo htmlspecialchars($row['thumbnailpath']); ?>" alt="Thumbnail">
+                                </div>
+                                <div class="video-title"><?php echo htmlspecialchars($row['title']); ?></div>
+                                  <div class="video-info">
                                                     by: <?php echo htmlspecialchars($row['username']); ?> / <?php echo htmlspecialchars($row['duration']); ?> mins / <?php echo htmlspecialchars($row['views']); ?> views
-                                                </div>
-                              </div>
-                          <?php endwhile; ?>
-                         <?php else: ?>
-                          <p>No videos found. Maybe try <a href="index.php">refreshing</a> or searching?</p>
-                         <?php endif; ?>
+                                  </div>
+                                </div>
+                              <?php endwhile; ?>
+                          <?php else: ?>
+                            <p>No videos found. Maybe try <a href="index.php">refreshing</a> or searching?</p>
+                          <?php endif; ?>
                         </td>
                       </tr>
                     </tbody>
