@@ -11,6 +11,7 @@ Users can currently change their profile picture and channel background, but dis
 
 Coming soon...
 - Reporting.
+- Custom Video Player
 - Admin Panel.
 - User Roles.
 ## Common Questions
