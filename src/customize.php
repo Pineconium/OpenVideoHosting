@@ -1,6 +1,6 @@
 <!-- 
 * Open Video Hosting Project Main Page
-* Version: 10d (July 9th 2024)
+* Version: 10e (Aug. 7th 2024)
 *
 * Note that some stuff such as donation and database control either have empty or placeholder values.
 * It is up to the hoster of this Open page to control how these work and will need to fill in these
@@ -22,26 +22,26 @@ if (!isset($_SESSION['username'])) {
     exit();
 }
 
-/* Fetch da data */
+/* fetch da data */
 $username = $_SESSION['username'];
-$userQuery = "SELECT * FROM users WHERE username='$username'";
-$userResult = mysqli_query($con, $userQuery);
+$usr_query = "SELECT * FROM users WHERE username='$username'";
+$usr_result = mysqli_query($con, $usr_query);
 
-if ($userResult && mysqli_num_rows($userResult) > 0) {
-    $userData = mysqli_fetch_assoc($userResult);
+if ($usr_result && mysqli_num_rows($usr_result) > 0) {
+    $usr_dat = mysqli_fetch_assoc($usr_result);
 } else {
     echo "<p>Error fetching user data: " . mysqli_error($con) . "</p>";
     exit();
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $uploadOk = true;
+    $upload_ok = true;
 
     /* this is where the profile pictures get handelled */
     if (!empty($_FILES['profile_picture']['name'])) {
-        $target_dir = "usergen/img/pfp/";
-        $target_file = $target_dir . $userData['id'] . ".png";
-        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+        $targ_dir = "usergen/img/pfp/";
+        $targ_file = $targ_dir . $usr_dat['id'] . ".png";
+        $img_file = strtolower(pathinfo($targ_file, PATHINFO_EXTENSION));
         
         /* The next three lines check if the file submitted is...
 	    * - A PNG image (JPEG and GIF support soon!)
@@ -51,53 +51,53 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         
         $check = getimagesize($_FILES['profile_picture']['tmp_name']);
         if ($check === false) {
-            echo "Error submiting. Cause? Suggested file is not a vaild image.";
-            $uploadOk = false;
+            echo "Error submiting. Cause? Uploaded file is not a vaild image.";
+            $upload_ok = false;
         }
 
         if ($_FILES['profile_picture']['size'] > 5000000) {
             echo "Error submiting. Cause? File is over 5MB.";
-            $uploadOk = false;
+            $upload_ok = false;
         }
 
         /* check if any errors happening */
-        if ($uploadOk) {
-            if (!move_uploaded_file($_FILES['profile_picture']['tmp_name'], $target_file)) {
-                echo "Sorry, there was an error uploading your profile picture.";
-                $uploadOk = false;
+        if ($upload_ok) {
+            if (!move_uploaded_file($_FILES['profile_picture']['tmp_name'], $targ_file)) {
+                echo "A problem occured while uploading your profile picture.";
+                $upload_ok = false;
             }
         }
     }
 
     /* do the same shit but for backgrounds */
     if (!empty($_FILES['background']['name'])) {
-        $target_dir = "usergen/img/bg/";
-        $target_file = $target_dir . $userData['id'] . ".png";
-        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+        $targ_dir = "usergen/img/bg/";
+        $targ_file = $targ_dir . $usr_dat['id'] . ".png";
+        $img_file = strtolower(pathinfo($targ_file, PATHINFO_EXTENSION));
         
         $check = getimagesize($_FILES['background']['tmp_name']);
         if ($check === false) {
-            echo "File is not an image.";
-            $uploadOk = false;
+            echo "Error submiting. Cause? Uploaded file is not a vaild image.";
+            $upload_ok = false;
         }
 
         if ($_FILES['background']['size'] > 5000000) {
-            echo "Sorry, your file is too large.";
-            $uploadOk = false;
+            echo "Error submiting. Cause? File is over 5MB.";
+            $upload_ok = false;
         }
 
-        if ($imageFileType != "png") {
-            echo "Sorry, only PNG files are allowed.";
-            $uploadOk = false;
+        if ($img_file != "png") {
+            echo "Error submiting. Cause? Uploaded file is not a PNG image.";
+            $upload_ok = false;
         }
 
         /* check for errors again */
-        if ($uploadOk) {
-            if (!move_uploaded_file($_FILES['background']['tmp_name'], $target_file)) {
-                echo "Sorry, there was an error uploading your background.";
-                $uploadOk = false;
+        if ($upload_ok) {
+            if (!move_uploaded_file($_FILES['background']['tmp_name'], $targ_file)) {
+                echo "A problem occured while uploading your background.";
+                $upload_ok = false;
             } else {
-                $updateBackgroundQuery = "UPDATE users SET backgroundpath='$target_file' WHERE id='".$userData['id']."'";
+                $updateBackgroundQuery = "UPDATE users SET backgroundpath='$targ_file' WHERE id='".$usr_dat['id']."'";
                 if (!mysqli_query($con, $updateBackgroundQuery)) {
                     echo "Error updating background path: " . mysqli_error($con);
                 }
@@ -105,43 +105,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 
-    /* and now, for banners 
-
-	-- TEMPORARLY COMMENTED DUE TO A BUG --
-    -- Needs to be fixed in a pull request. --
-    if (!empty($_FILES['banner']['name'])) {
-        $target_dir = "usergen/img/banner/";
-        $target_file = $target_dir . $userData['id'] . ".png";
-        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-        
-        /* The next three lines check if the file submitted is...
-         * - A PNG image (JPEG and GIF support soon!)
-         * - Under 5,000,000 (~5MB) big
-         * - And is actually a fucking image
-         /
-        $check = getimagesize($_FILES['banner']['tmp_name']);
-        if ($check === false) {
-            echo "Error submiting. Cause? Suggested file is not a vaild image.";
-            $uploadOk = false;
-        }
-
-        if ($_FILES['banner']['size'] > 5000000) {
-            echo "Error submiting. Cause? File is over 5MB.";
-            $uploadOk = false;
-        }
-
-        /* check if any errors happening 
-        if ($uploadOk) {
-            if (!move_uploaded_file($_FILES['banner']['tmp_name'], $target_file)) {
-                echo "Sorry, there was an error uploading your banner. Maybe try again?";
-                $uploadOk = false;
-            }
-        }
-    }
-    */
-
-
-    if ($uploadOk) {
+    if ($upload_ok) {
         header("Location: profile.php");
         exit();
     }
@@ -151,7 +115,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Open » Customize Profile</title>
+    <title>Open &raquo; Customize Profile</title>
     <link rel="stylesheet" href="style/styles.css">
     <link rel="icon" type="image/x-icon" href="images/logos/favicon.png">
     <meta charset="UTF-8">
@@ -188,7 +152,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <tbody>
             <tr>
                 <td>
-		    <center>
+		            <center>
                         <h1>Customize Your Profile</h1>
                         <form action="customize.php" method="post" enctype="multipart/form-data">
                             <label for="profile_picture">Profile Picture:</label>

@@ -1,6 +1,6 @@
 <!-- 
 * Open Video Hosting Project Main Page
-* Version: 10d (July 9th 2024)
+* Version: 10e (August 7th 2024)
 *
 * Note that some stuff such as donation and database control either have empty or placeholder values.
 * It is up to the hoster of this Open page to control how these work and will need to fill in these
@@ -8,7 +8,6 @@
 *
 * Originally written by Daniel B. (better known as Pineconium) ;-)
 -->
-
 
 <?php
 session_start();
@@ -19,53 +18,55 @@ error_reporting(E_ALL);
 require('db.php');
 
 /* obtain video id from the url, which is numeric instead of a random string */
-$videoId = isset($_GET['id']) ? intval($_GET['id']) : null;
+$vid_id = isset($_GET['id']) ? intval($_GET['id']) : null;
 
-if ($videoId === null) {
+if ($vid_id === null) {
     echo "<p>STOP 802! Video ID not provided.</p>";
     exit();
 }
 
-$videoQuery = "SELECT videos.*, users.username, users.backgroundpath 
+$vid_query = "SELECT videos.*, users.username, users.backgroundpath 
                FROM videos 
                JOIN users ON videos.user_id = users.id 
-               WHERE videos.id='$videoId'";
-$videoResult = mysqli_query($con, $videoQuery);
+               WHERE videos.id='$vid_id'";
+$vid_result = mysqli_query($con, $vid_query);
 
-if (mysqli_num_rows($videoResult) == 0) {
+if (mysqli_num_rows($vid_result) == 0) {
     echo "<p>STOP 801! Video ID requested not found.</p>";
     exit();
 }
 
-$videoData = mysqli_fetch_assoc($videoResult);
+$vid_data = mysqli_fetch_assoc($vid_result);
 
-$commentQuery = "SELECT comments.*, users.username 
+$comm_query = "SELECT comments.*, users.username 
                  FROM comments 
                  JOIN users ON comments.user_id = users.id 
-                 WHERE comments.video_id='$videoId' 
+                 WHERE comments.video_id='$vid_id' 
                  ORDER BY comments.created_at DESC";
-$commentResult = mysqli_query($con, $commentQuery);
+$comm_result = mysqli_query($con, $comm_query);
 
-$similarQuery = "SELECT * 
+$simi_query = "SELECT * 
                  FROM videos 
-                 WHERE (user_id='{$videoData['user_id']}' OR title LIKE '%{$videoData['title']}%') 
-                 AND id != '$videoId' 
+                 WHERE (user_id='{$vid_data['user_id']}' OR title LIKE '%{$vid_data['title']}%') 
+                 AND id != '$vid_id' 
                  ORDER BY upload_time DESC 
                  LIMIT 5";
-$similarResult = mysqli_query($con, $similarQuery);
+$simi_result = mysqli_query($con, $simi_query);
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Open &#187; <?php echo htmlspecialchars($videoData['title']); ?></title>
+    <title>Open &#187; <?php echo htmlspecialchars($vid_data['title']); ?></title>
     <!-- Styles and Favicon management-->
     <link rel="stylesheet" href="style/styles.css">
     <link rel="icon" type="image/x-icon" href="images/logos/favicon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body style="background: url('/usergen/img/backgrounds/<?php echo htmlspecialchars($videoData['user_id']); ?>.png') no-repeat center center fixed; background-size: cover;">
+
+<!-- Make the background match the users profile background, akin to what old YouTube is like. -->
+<body style="background: url('/usergen/img/backgrounds/<?php echo htmlspecialchars($vid_data['user_id']); ?>.png') no-repeat center center fixed; background-size: cover;">
     <!-- Header and Navigation control -->
     <table class="PineconiumLogoSector">
         <thead>
@@ -111,9 +112,9 @@ $similarResult = mysqli_query($con, $similarQuery);
                             <tr>
                                 <div class="title-container">
                                     <!-- Profile Picture MUST be on the left-hand side to the video title and creator information -->
-                                    <img src="/usergen/img/pfp/<?php echo htmlspecialchars($videoData['user_id']); ?>.png" width="72px" height="72px" alt="Profile Picture">
-                                    <h1 class="table_title"><?php echo htmlspecialchars($videoData['title']); ?></h1><br>
-                                    <p>by, <?php echo htmlspecialchars($videoData['username']); ?> - (SUBCOUNT) subscribers <button>Subscribe</button></p>
+                                    <img src="/usergen/img/pfp/<?php echo htmlspecialchars($vid_data['user_id']); ?>.png" width="72px" height="72px" alt="Profile Picture">
+                                    <h1 class="table_title"><?php echo htmlspecialchars($vid_data['title']); ?></h1><br>
+                                    <p>by, <?php echo htmlspecialchars($vid_data['username']); ?> - (SUBCOUNT) subscribers <button>Subscribe</button></p>
                                 </div>
                             </tr>
                         </thead>
@@ -121,16 +122,18 @@ $similarResult = mysqli_query($con, $similarQuery);
                             <tr>
                                 <td>
                                     <video width="100%" controls>
-                                        <source src="usergen/vid/<?php echo htmlspecialchars($videoData['id']); ?>.mp4" type="video/mp4">
-                                        Your browser does not support native playback of videos.
+                                        <source src="usergen/vid/<?php echo htmlspecialchars($vid_data['id']); ?>.mp4" type="video/mp4">
+                                        <!-- fallout -->
+                                        ERROR 901: Your browser doesn't support the video tag.
                                     </video>
                                     <table class="TopStatusArea">
+                                        <!-- TODO: Make like and dislike icons and fix stuff regarding the like counter-->
                                         <thead>
                                             <tr>
                                                 <td>
-                                                    <?php echo htmlspecialchars($videoData['views']); ?> views - 
-                                                    <button>Like</button> <?php echo htmlspecialchars($videoData['likes']); ?> likes - 
-                                                    <button>Dislike</button> <?php echo htmlspecialchars($videoData['dislikes']); ?> dislikes<br>
+                                                    <?php echo htmlspecialchars($vid_data['views']); ?> views - 
+                                                    <button>Like</button> <?php echo htmlspecialchars($vid_data['likes']); ?> like(s) - 
+                                                    <button>Dislike</button> <?php echo htmlspecialchars($vid_data['dislikes']); ?> dislike(s)<br>
                                                     <h3>Description</h3>
                                                 </td>
                                             </tr>
@@ -138,8 +141,8 @@ $similarResult = mysqli_query($con, $similarQuery);
                                         <tbody>
                                             <tr>
                                                 <td>
-                                                    Uploaded on: <?php echo htmlspecialchars($videoData['upload_time']); ?><br>
-                                                    <?php echo nl2br(htmlspecialchars($videoData['description'])); ?>
+                                                    Uploaded on: <?php echo htmlspecialchars($vid_data['upload_time']); ?><br>
+                                                    <?php echo nl2br(htmlspecialchars($vid_data['description'])); ?>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -154,8 +157,8 @@ $similarResult = mysqli_query($con, $similarQuery);
                                             <tbody>
                                                 <tr>
                                                     <td>
-                                                        <?php if (mysqli_num_rows($similarResult) > 0): ?>
-                                                            <?php while($similar = mysqli_fetch_assoc($similarResult)): ?>
+                                                        <?php if (mysqli_num_rows($simi_result) > 0): ?>
+                                                            <?php while($similar = mysqli_fetch_assoc($simi_result)): ?>
                                                                 <div class="similar-video">
                                                                     <a href="video.php?id=<?php echo $similar['id']; ?>">
                                                                         <img src="path_to_thumbnail/<?php echo htmlspecialchars($similar['thumbnailpath']); ?>" alt="Thumbnail">
@@ -183,13 +186,13 @@ $similarResult = mysqli_query($con, $similarQuery);
                                                     <td>
                                                         <?php if (isset($_SESSION['username'])): ?>
                                                             <form action="comment.php" method="post">
-                                                                <input type="hidden" name="video_id" value="<?php echo $videoId; ?>">
+                                                                <input type="hidden" name="video_id" value="<?php echo $vid_id; ?>">
                                                                 <textarea name="comment" placeholder="Write a comment..." required></textarea>
                                                                 <button type="submit">Post</button>
                                                             </form>
                                                         <?php endif; ?>
-                                                        <?php if (mysqli_num_rows($commentResult) > 0): ?>
-                                                            <?php while($comment = mysqli_fetch_assoc($commentResult)): ?>
+                                                        <?php if (mysqli_num_rows($comm_result) > 0): ?>
+                                                            <?php while($comment = mysqli_fetch_assoc($comm_result)): ?>
                                                                 <div class="comment">
                                                                     <strong><?php echo htmlspecialchars($comment['username']); ?></strong>: 
                                                                     <?php echo htmlspecialchars($comment['content']); ?>

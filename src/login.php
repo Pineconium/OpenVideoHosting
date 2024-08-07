@@ -16,7 +16,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-// Connect to the database
+/* connet to the database */
 require('db.php');
 
 /* Login control stuff */
@@ -29,7 +29,7 @@ if(isset($_POST['username'])){
         $password = stripslashes($_REQUEST['password']);  // Removes backslashes.
         $password = mysqli_real_escape_string($con, $password);
 
-        /* Make sure that the user exists first so that ghost accounts can't be signed in! */
+        /* make sure that the user exists first so that ghost accounts can't be signed in! */
         $query = "SELECT * FROM `users` WHERE username='$username' AND password='".md5($password)."'";    // <-- Fancy SQL stuff
         $result = mysqli_query($con, $query) or die(mysqli_error($con));
 
@@ -97,7 +97,7 @@ if(isset($_POST['username'])){
                   <input type="text" name="username" placeholder="Username" required />
                   <input type="password" name="password" placeholder="Password" required />
                   <input type="submit" name="submit" value="Login" />
-		  <?php if (isset($error)) { echo "<p style='color:red;'>$error</p>"; } ?>
+		              <?php if (isset($error)) { echo "<center><p style='color:red;'>$error</p></center>"; } ?>
               </form>
               </td>
             </tr>

@@ -100,11 +100,11 @@ $topvidresult = $con->query($queryTopVideos);
                   <div class="nav-actions">
                       <input type="text" placeholder="Search Openly...">
                       <button>Search!</button>
-		      <?php if(isset($_SESSION['username'])): ?>
+		                  <?php if(isset($_SESSION['username'])): ?>
                         <a href="upload.php">Upload</a>
-		      	<a href="profile.php"><?php echo htmlspecialchars($_SESSION['username']); ?></a>
-			<a href="logout.php">Logut</a>
-		      <?php else: ?>
+		      	            <a href="profile.php"><?php echo htmlspecialchars($_SESSION['username']); ?></a>
+			                  <a href="logout.php">Logut</a>
+		                  <?php else: ?>
                       	<a href="login.php">Login</a>
                       	<a href="register.php">Register</a>
                       <?php endif; ?>
