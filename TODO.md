@@ -14,8 +14,8 @@ Feel free to expand or help out on the project via pull requests.
 - [ ] Functioning Subscriber count.
 - [x] Profile customization.
  - Currently Supports: Profile Pictures, Backgrounds.
- - Needing Fixes: Banner support.
- - Not Supported: About Me's, Display Names, Profile Colourization support, Subscriber List, Removing Videos, Animated PFP's and Backgrounds.
+ - Needs Fixing: Banner support.
+ - Not Supported: About Me's, Display Names, Profile Colourization support, Subscriber List, Removing Videos, Animated Profile Pictures and Backgrounds.
 # Video Player
 - [x] Native Video Player (via browser).
 - [ ] Custom Video Player.
@@ -25,6 +25,7 @@ Feel free to expand or help out on the project via pull requests.
 - [ ] Functioning Ratings (Like/Dislike) System.
 - [x] Similar Videos fetching.
 # Admin/Moderation Tools
+- [ ] Reporting feature
 - [ ] Working Admin Panel.
 - [ ] Moderator's Panel.
 - [ ] Ability to Ban users.
