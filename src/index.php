@@ -75,7 +75,7 @@ $topvidresult = $con->query($queryTopVideos);
     <head>
         <title>Open &#187; Home</title>
         <!-- Styles and Favicon management-->
-        <link rel="stylesheet" href="style/styles.css">
+        <link rel="stylesheet" href="styles.css">
         <link rel="icon" type="image/x-icon" href="images/logos/favicon.png">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">

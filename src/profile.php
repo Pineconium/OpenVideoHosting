@@ -65,7 +65,7 @@ $isOwnProfile = isset($_SESSION['username']) && $usr_dat['username'] === $_SESSI
 <head>
     <title>Open » <?php echo htmlspecialchars($usr_dat['username']); ?></title>
     <!-- Styles and Favicon management-->
-    <link rel="stylesheet" href="style/styles.css">
+    <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/x-icon" href="images/logos/favicon.png">
     <!-- Re-add a feature YouTube once had but decided to remove, that being profile backgrounds! -->
     <style>

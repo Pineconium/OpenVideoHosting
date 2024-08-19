@@ -59,7 +59,7 @@ $simi_result = mysqli_query($con, $simi_query);
 <head>
     <title>Open &#187; <?php echo htmlspecialchars($vid_data['title']); ?></title>
     <!-- Styles and Favicon management-->
-    <link rel="stylesheet" href="style/styles.css">
+    <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/x-icon" href="images/logos/favicon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
