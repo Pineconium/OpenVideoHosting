@@ -49,7 +49,7 @@ $simi_query = "SELECT *
                  FROM videos 
                  WHERE (user_id='{$vid_data['user_id']}' OR title LIKE '%{$vid_data['title']}%') 
                  AND id != '$vid_id' 
-                 ORDER BY upload_time DESC 
+                 ORDER BY creationdate DESC 
                  LIMIT 5";
 $simi_result = mysqli_query($con, $simi_query);
 ?>
@@ -141,7 +141,7 @@ $simi_result = mysqli_query($con, $simi_query);
                                         <tbody>
                                             <tr>
                                                 <td>
-                                                    Uploaded on: <?php echo htmlspecialchars($vid_data['upload_time']); ?><br>
+                                                    Uploaded on: <?php echo htmlspecialchars($vid_data['creationdate']); ?><br>
                                                     <?php echo nl2br(htmlspecialchars($vid_data['description'])); ?>
                                                 </td>
                                             </tr>
