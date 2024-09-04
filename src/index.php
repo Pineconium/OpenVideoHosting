@@ -38,7 +38,7 @@ $videoQuery = "
     ON 
         videos.user_id = users.id 
     ORDER BY 
-        videos.created_at DESC
+        videos.creationdate DESC
 ";
 
 $result = $con->query($videoQuery);
@@ -60,7 +60,7 @@ $queryTopVideos = "
     ON 
         videos.user_id = users.id 
     WHERE 
-        WEEK(videos.upload_time) = WEEK('$currentDateTime') 
+        WEEK(videos.creationdate) = WEEK('$currentDateTime') 
     ORDER BY 
         videos.views DESC
     LIMIT 3
@@ -167,7 +167,7 @@ $topvidresult = $con->query($queryTopVideos);
                              </div>
                              <div class="video-title"><?php echo htmlspecialchars($row['title']); ?></div>
                               <div class="video-info">
-                                                    by: <?php echo htmlspecialchars($row['username']); ?> / <?php echo htmlspecialchars($row['duration']); ?> mins / <?php echo htmlspecialchars($row['views']); ?> views
+                                                    by: <?php echo htmlspecialchars($row['username']); ?> / <?php echo htmlspecialchars($row['vidlength']); ?> mins / <?php echo htmlspecialchars($row['views']); ?> views
                                                 </div>
                               </div>
                           <?php endwhile; ?>
@@ -197,7 +197,7 @@ $topvidresult = $con->query($queryTopVideos);
                                 </div>
                                 <div class="video-title"><?php echo htmlspecialchars($row['title']); ?></div>
                                   <div class="video-info">
-                                                    by: <?php echo htmlspecialchars($row['username']); ?> / <?php echo htmlspecialchars($row['duration']); ?> mins / <?php echo htmlspecialchars($row['views']); ?> views
+                                                    by: <?php echo htmlspecialchars($row['username']); ?> / <?php echo htmlspecialchars($row['vidlength']); ?> mins / <?php echo htmlspecialchars($row['views']); ?> views
                                   </div>
                                 </div>
                               <?php endwhile; ?>
@@ -227,7 +227,7 @@ $topvidresult = $con->query($queryTopVideos);
                              </div>
                              <div class="video-title"><?php echo htmlspecialchars($row['title']); ?></div>
                               <div class="video-info">
-                                                    by: <?php echo htmlspecialchars($row['username']); ?> / <?php echo htmlspecialchars($row['duration']); ?> mins / <?php echo htmlspecialchars($row['views']); ?> views
+                                                    by: <?php echo htmlspecialchars($row['username']); ?> / <?php echo htmlspecialchars($row['vidlength']); ?> mins / <?php echo htmlspecialchars($row['views']); ?> views
                                                 </div>
                               </div>
                           <?php endwhile; ?>

@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $userID = $userRow['id'];
 
     /* insert video info into database */
-    $query = "INSERT INTO videos (user_id, title, description, thumbnailpath, duration, views, upload_time) VALUES ('$userID', '$title', '$description', '$thumbnailFilePath', 0, 0, NOW())";
+    $query = "INSERT INTO videos (user_id, title, description, filepath, thumbnailpath, vidlength, views, creationdate) VALUES ('$userID', '$title', '$description', 'usergen/vid/', '$thumbnailFilePath', 0, 0, NOW())";
     mysqli_query($con, $query) or die(mysqli_error($con));
 
     /* fetch id of said video */
@@ -60,7 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $updateQuery = "UPDATE videos SET filepath='$videoFilePath' WHERE id='$videoID'";
     mysqli_query($con, $updateQuery) or die(mysqli_error($con));
 }
-
+?>
 <!DOCTYPE html>
 <html>
 <head>
