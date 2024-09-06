@@ -24,7 +24,8 @@ $currentDateTime = date('Y-m-d H:i:s');
 /* Fetch videos from the database, I know it looks ugly but shut up. */
 $videoQuery = "
     SELECT 
-        videos.title, 
+        videos.id,
+	videos.title, 
         videos.filepath, 
         videos.thumbnailpath, 
         videos.creationdate, 
@@ -46,7 +47,8 @@ $result = $con->query($videoQuery);
 /* Do the same but for more popular videos */
 $queryTopVideos = "
     SELECT 
-        videos.title, 
+        videos.id,
+	videos.title, 
         videos.filepath, 
         videos.thumbnailpath, 
         videos.creationdate, 
@@ -163,9 +165,9 @@ $topvidresult = $con->query($queryTopVideos);
                           <?php while($row = $result->fetch_assoc()): ?>
                             <div class="video-container">
                              <div class="video-thumbnail">
-                              <img src="<?php echo htmlspecialchars($row['thumbnailpath']); ?>" alt="Thumbnail">
+                              <img class="video-thumbnail-image" src="<?php echo htmlspecialchars($row['thumbnailpath']); ?>" alt="Thumbnail">
                              </div>
-                             <div class="video-title"><?php echo htmlspecialchars($row['title']); ?></div>
+                             <div class="video-title"><a href="video.php?id=<?php echo $row['id']; ?>" ><?php echo htmlspecialchars($row['title']); ?></a></div>
                               <div class="video-info">
                                                     by: <?php echo htmlspecialchars($row['username']); ?> / <?php echo htmlspecialchars($row['vidlength']); ?> mins / <?php echo htmlspecialchars($row['views']); ?> views
                                                 </div>
@@ -187,15 +189,15 @@ $topvidresult = $con->query($queryTopVideos);
                     </thead>
                     <tbody>
                       <tr>
-                        <!-- To save stuff like updating time, this should perferably be updated every 25 mins.-->
+                        <!-- this should perferably be updated every 25 mins to save stuff like updating time. -->
                         <td>
 			                    <?php if ($result->num_rows > 0): ?>
                             <?php while($row = $result->fetch_assoc()): ?>
                               <div class="video-container">
                                 <div class="video-thumbnail">
-                                  <img src="<?php echo htmlspecialchars($row['thumbnailpath']); ?>" alt="Thumbnail">
+                                  <img class="video-thumbnail-image" src="<?php echo htmlspecialchars($row['thumbnailpath']); ?>" alt="Thumbnail">
                                 </div>
-                                <div class="video-title"><?php echo htmlspecialchars($row['title']); ?></div>
+                                <div class="video-title"><a href="video.php?id=<?php echo $row['id']; ?>" ><?php echo htmlspecialchars($row['title']); ?></a></div>
                                   <div class="video-info">
                                                     by: <?php echo htmlspecialchars($row['username']); ?> / <?php echo htmlspecialchars($row['vidlength']); ?> mins / <?php echo htmlspecialchars($row['views']); ?> views
                                   </div>
@@ -223,9 +225,9 @@ $topvidresult = $con->query($queryTopVideos);
                           <?php while($row = $topvidresult->fetch_assoc()): ?>
                             <div class="video-container">
                              <div class="video-thumbnail">
-                              <img src="<?php echo htmlspecialchars($row['thumbnailpath']); ?>" alt="Thumbnail">
+                              <img class="video-thumbnail-image" src="<?php echo htmlspecialchars($row['thumbnailpath']); ?>" alt="Thumbnail">
                              </div>
-                             <div class="video-title"><?php echo htmlspecialchars($row['title']); ?></div>
+                             <div class="video-title"><a href="video.php?id=<?php echo $row['id']; ?>" ><?php echo htmlspecialchars($row['title']); ?></a></div>
                               <div class="video-info">
                                                     by: <?php echo htmlspecialchars($row['username']); ?> / <?php echo htmlspecialchars($row['vidlength']); ?> mins / <?php echo htmlspecialchars($row['views']); ?> views
                                                 </div>
