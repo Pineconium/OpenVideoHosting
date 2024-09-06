@@ -1,5 +1,6 @@
 /* STYLESHEET FOR OPEN VIDEO HOSTING */
 
+/* - BEGIN COMMON PINECONIUM CSS STUFF - */
 body {
 	margin-left: 0px;
 	margin-top: 0px;
@@ -111,6 +112,7 @@ a:hover.footer {color: #666666; }
 	margin-right: 10px; /* Add some space between the image and the title */
   }
 
+/* - END COMMON PINECONIUM CSS STUFF - */
 
 /* Navbar styling */
 
@@ -154,15 +156,24 @@ a:hover.footer {color: #666666; }
 	text-align: left;
 	vertical-align: top;
 }
+
 .video-thumbnail {
 	width: 100%;
 	height: 120px;
 	background-color: black;
 }
+
+.video-thumbnail-image {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+}
+
 .video-title {
 	font-size: 16px;
 	margin: 10px 0;
 }
+
 .video-info {
 	font-size: 12px;
 }
