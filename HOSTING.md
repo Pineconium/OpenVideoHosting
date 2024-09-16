@@ -1,5 +1,5 @@
 # How to host a *Open* site
-NOTE: This tutorial was originally designed for server computers running Linux and are being hosted via Apache. Depending on what you're going to use to host Open, you may need to do different things to get it to work.
+NOTE: This tutorial was originally designed for server computers running Linux and are being hosted via Apache. Depending on what you will use to host Open, you may need to do different things to get it to work.
 
 ## 1. Hardware
 To start running an Open-powered video hosting site, you'll need the following:
@@ -18,11 +18,11 @@ To start running an Open-powered video hosting site, you'll need the following:
     - And Website Security provider.
 4. A registered domain (if you want your site to be public).
 ## 2. How to Start
-First, ensure both your server and client computers are on, and then log in to your server computer as root via your client PC. Make sure you have the `source.zip` folder on your client PC and extract it. You'll need to send all of the contents of the zip folder to your server PC and then move the contents to your server's hosting directory (such as `/var/www/html` if you're using Apache on Linux). Once you have everything moved to your server computer, ensure you can access it with a localhost IP (which is any IP address starting with 192.168.0.*xx*).
+First, ensure both your server and client computers are on, and then log in to your server computer as root via your client PC. Make sure you have the `source.zip` folder on your client PC and extract it. You'll need to send all of the contents of the zip folder to your server PC and then move the contents to your server's hosting directory (such as `/var/www/html/` if you're using Apache on Linux). Once everything is moved to your server computer, ensure you can access it with a local host IP (any IP address starting with 192.168.0.*xx*).
 
 ## 3. Making your SQL tables.
 First, create an SQL database, you can call it whatever you want. Now add these 2 tables to it, `users`, `comments`, `likes`, and `videos`, as well as their respective columns. Here is the cheatsheet for you:
-```
+```sql
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(255) NOT NULL UNIQUE,
