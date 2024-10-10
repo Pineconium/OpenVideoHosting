@@ -9,19 +9,20 @@ Feel free to expand or help out on the project via pull requests.
 - [x] Registration Page.
 - [x] Profile Page.
 - [x] Video Viewing Page.
-# Profiles
+# Profiles/Users
 - [ ] Profile Statuses (i.e. Verified/Admin roles).
 - [ ] Functioning Subscriber count.
 - [x] Profile customization.
  - Currently Supports: Profile Pictures, Backgrounds.
  - Needs Fixing: Banner support.
  - Not Supported: About Me's, Display Names, Profile Colourization support, Subscriber List, Removing Videos, Animated Profile Pictures and Backgrounds.
+- [ ] Private Videos Support
 # Video Player
 - [x] Native Video Player (via browser).
 - [ ] Custom Video Player.
 - [x] Comments.
   - Currently Supports: Barebones Commenting
-  - Not Supported: Profile Picture rendering, Ability to Delete or Report a comment.
+  - Not Supported: Profile Picture rendering, Ability to Delete, Edit, or Report a comment.
 - [ ] Functioning Ratings (Like/Dislike) System.
 - [x] Similar Videos fetching.
 # Admin/Moderation Tools
