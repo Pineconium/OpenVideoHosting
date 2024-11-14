@@ -4,9 +4,9 @@ NOTE: This tutorial was originally designed for server computers running Linux a
 ## 1. Hardware
 To start running an Open-powered video hosting site, you'll need the following:
 1. Any Server Computer with these minimum specs.
-    - Storage: At least 1 hard drive with at least 1 TB of disk space.
+    - Storage: At least 1 hard drive with at least 1 TB of total disk space.
     - RAM: 8 GB
-    - Operating System: Any OS designed for server use.
+    - Operating System: Any OS designed for server use. (Recommended to use any Linux Server Distro)
     - Networking: Ethernet or (if possible) Wireless.
 2. Any Client Computer. (This will be used to control the server computer).
 3. Any software for the following purposes:
@@ -14,7 +14,7 @@ To start running an Open-powered video hosting site, you'll need the following:
     - PHP support.
     - SSH or Remote Desktop (depending on your OS for the client and server computers).
     - Website Database (usually in SQL).
-    - Any text editing program (like Nano, Vim, or VSCode).
+    - Any text editing program (like Nano, Neovim, or VSCode).
     - And Website Security provider.
 4. A registered domain (if you want your site to be public).
 ## 2. How to Start
