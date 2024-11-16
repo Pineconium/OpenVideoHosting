@@ -70,15 +70,15 @@ if(isset($_POST['username'])){
               <td>
                 <div class="navbar">
                   <div class="nav-links">
-                      <a href="index.html">Home Page</a>
+                      <a href="index.php">Home Page</a>
                       <a href="about.html">About Open</a>
                       <a href="tos.html">Terms of Service</a>
                   </div>
                   <div class="nav-actions">
                       <input type="text" placeholder="Search Openly...">
                       <button>Search!</button>
-                      <a href="login.html">Login</a>
-                      <a href="register.html">Register</a>
+                      <a href="login.php">Login</a>
+                      <a href="register.php">Register</a>
                   </div>
               </div>
               </td>
