@@ -79,7 +79,7 @@ $simi_result = mysqli_query($con, $simi_query);
                 <td>
                     <div class="navbar">
                         <div class="nav-links">
-                            <a href="index.html">Home Page</a>
+                            <a href="index.php">Home Page</a>
                             <a href="about.html">About Open</a>
                             <a href="tos.html">Terms of Service</a>
                         </div>
@@ -92,8 +92,8 @@ $simi_result = mysqli_query($con, $simi_query);
                                 <a href="profile.php"><?php echo htmlspecialchars($_SESSION['username']); ?></a>
                                 <a href="logout.php">Logout</a>
                             <?php else: ?>
-                                <a href="login.html">Login</a>
-                                <a href="register.html">Register</a>
+                                <a href="login.php">Login</a>
+                                <a href="register.php">Register</a>
                             <?php endif; ?>
                         </div>
                     </div>
