@@ -13,6 +13,6 @@ Yes, but you'll obviously need to change the files.
 ### Does Open have its own ToS?
 Not really, there are some more common rules you and your userbase must follow described in `RULES.md`, but you can pretty much make your own rules regarding mature or adult content in your Open site.
 ### How can I contribute to Open?
-If you know both PHP and SQL, you can help with the project regarding the video player, security support, etc.
+You can contribute to Open as long as you have a basic understanding of the PHP language. See `TODO.md` to what needs to be done.
 ### Why does Open look so... old?
 The early web-esque look of Open was intentionally done since Open's UI/UX is based/inspired by early YouTube. You can give your fork a more modern feel if you want.
