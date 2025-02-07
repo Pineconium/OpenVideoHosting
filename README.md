@@ -1,5 +1,5 @@
 # Welcome to Open
-![Open Logo](https://raw.githubusercontent.com/Pineconium/OpenVideoHosting/main/OpenLogo.png)
+![Open Logo](https://raw.githubusercontent.com/Pineconium/OpenVideoHosting/main/src/images/header.gif)
 
 ## What is Open?
 Open, also known as *The Open Video Hosting Project*, is an entirely handwritten website template, designed for those wanting to make their own YouTube alternative or (using API keys) clone. The name *Open* is sort of a pun on it being open-source. Currently, it is only in *Alpha*, meaning some features aren't complete yet, but you may feel free to contribute to the Open Project if you want to, see TODO.MD for what needs to be done.
