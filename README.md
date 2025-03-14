@@ -2,7 +2,7 @@
 ![Open Logo](https://raw.githubusercontent.com/Pineconium/OpenVideoHosting/main/src/images/header.gif)
 
 ## What is Open?
-Open, also known as *The Open Video Hosting Project*, is an entirely handwritten website template, designed for those wanting to make their own YouTube alternative or (using API keys) clone. The name *Open* is sort of a pun on it being open-source. Currently, it is only in *Alpha*, meaning some features aren't complete yet, but you may feel free to contribute to the Open Project if you want to, see TODO.MD for what needs to be done.
+Open, also known as *The Open Video Hosting Project*, is an entirely handwritten website template, designed for those wanting to make their own YouTube alternative or (using API keys) clone. The name *Open* is sort of a pun on it being open-source. Currently, it is only in a *Pre-Alpha* state, meaning some features aren't complete yet, but you may feel free to contribute to the Open Project if you want to, see TODO.MD for what needs to be done.
 
 ## How to Get Open Running:
 More detailed information about hosting your own Open based site can be found in `HOSTING.md`, but to simplify it, all you need is a server computer, a website hosting platform (like Apache2), any SQL Database, and some PHP and SQL knowledge and your set for life with your little Open site. By default, Open uses MySQL for its default SQL database, if you're going to use another SQL database service, you might need to change some of the PHP files.
